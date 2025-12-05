@@ -3,13 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const bouton = document.getElementById('monBouton');
   const message = document.getElementById('message');
   
-  // 2. Définir la fonction qui sera appelée au clic
-  function gererClic() {
-    message.textContent = 'Le bouton a été cliqué ! Super !';
-    bouton.style.backgroundColor = 'red';
-  }
-  
-  // 3. Ajouter un écouteur d'événement au bouton
+  // 2. Ajouter un écouteur d'événement au bouton
   bouton.addEventListener('click', gererClic);
   
   let sportsList = [
@@ -442,12 +436,15 @@ document.addEventListener('DOMContentLoaded', () => {
   buildQuiz();
   
   function realExo(multiplierNbExo,multiplierParExo,nbExosParSport){
-    const nbExo = multiplierNbExo*nbExosParSport[2];
-    const nbRep = multiplierParExo*nbExosParSport[1];
-    affichage=`${nbExo} fois ${nbRep} de ${nbExosParSport[0]}\n`;
-    return affichage
+    let affichage = ``;
+    nbExosParSport.forEach((indexNbExo) => {
+      const nbExo = multiplierNbExo*indexNbExo[2];
+      const nbRep = multiplierParExo*indexNbExo[1];
+      affichage+=`${`${nbExo} fois ${nbRep} de ${indexNbExo[0]}`}<br>`;
+    });
+    return affichage;
   }
-
+  
   function donneConseil(listeAime,multiplierNbExo,multiplierParExo) {
     // EXOS DE BASE (Force générale, Tonification)
     const exosFonctionnelBase = [
@@ -556,9 +553,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 23. Voile (Gainage Antirotation, Force du tronc)
     let nbExoVoile = exosFonctionnelStabilite;
-
-    let affichage =`Tu va faire:\n`;
+    
+    let affichage =`${`Tu va faire:`}<br>`;
     for (let i = 0;i<listeAime.length;i++){
+      affichage+=`${`Un jour:`}<br>`;
       if(listeAime[i][0]=="Sports de raquette"){
         affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDeRaquette);
       }
