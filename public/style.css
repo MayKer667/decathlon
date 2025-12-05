@@ -29,3 +29,6 @@ div.question{
   font-size: 130%;
 }
 
+main{
+  display: none;
+}

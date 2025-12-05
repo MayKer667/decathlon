@@ -3,7 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const bouton = document.getElementById('monBouton');
   const message = document.getElementById('message');
   
-  // 2. Ajouter un écouteur d'événement au bouton
+  // 2. Définir la fonction qui sera appelée au clic
+  function gererClic() {
+    message.textContent = 'Le bouton a été cliqué ! Super !';
+    bouton.style.backgroundColor = 'red';
+  }
+  
+  // 3. Ajouter un écouteur d'événement au bouton
   bouton.addEventListener('click', gererClic);
   
   let sportsList = [
