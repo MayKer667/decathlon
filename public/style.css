@@ -32,3 +32,192 @@ div.question{
 main{
   display: none;
 }
+
+/* --- VARIABLES ET RÉINITIALISATION DE BASE --- */
+:root {
+  --primary-color: #2a6fdb; /* Bleu vif pour l'accent */
+  --secondary-color: #f7b400; /* Jaune/Or pour le contraste */
+  --background-light: #f4f7f6; /* Arrière-plan général clair */
+  --text-dark: #333333; /* Texte principal foncé */
+  --border-radius-base: 8px;
+  --box-shadow-base: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Pour que le footer reste en bas */
+}
+
+/* --- EN-TÊTE (HEADER) --- */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: var(--box-shadow-base);
+}
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- CONTENEUR PRINCIPAL (QUIZ) --- */
+#quiz-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: var(--border-radius-base);
+  box-shadow: var(--box-shadow-base);
+  flex-grow: 1; /* Permet au conteneur de prendre l'espace restant */
+}
+
+/* --- QUESTIONS --- */
+div.question {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.25em;
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 10px;
+}
+
+/* --- RÉPONSES (RADIO BUTTONS) --- */
+.answers label {
+  display: block;
+  background-color: #ffffff;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: var(--border-radius-base);
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  border: 1px solid #ddd;
+}
+
+.answers label:hover {
+  background-color: #eef3ff;
+  border-color: var(--primary-color);
+}
+
+.answers input[type="radio"] {
+  margin-right: 10px;
+  /* Personnalisation de l'apparence des boutons radio */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  transition: background-color 0.2s;
+}
+
+.answers input[type="radio"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Cache l'élément principal vide */
+main {
+  display: none;
+}
+
+/* --- BOUTONS --- */
+#submit-button {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  margin-top: 30px;
+  background-color: var(--secondary-color);
+  color: var(--text-dark);
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius-base);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#submit-button:hover {
+  background-color: #ffc933;
+  transform: translateY(-1px);
+}
+
+#submit-button:active {
+  background-color: #e5ad00;
+  transform: translateY(0);
+}
+
+
+/* --- RÉSULTATS (DIVS niveau, sports, objectif) --- */
+#results, #niveau, #sports, #objectif {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: var(--border-radius-base);
+  background-color: #e9ecef; /* Fond légèrement grisé pour les résultats */
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+#objectif {
+  background-color: #ccffcc; /* Vert clair pour la recommandation finale */
+  border: 1px solid #a3e0a3;
+  font-weight: 500;
+}
+
+#niveau {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 30px;
+}
+
+#sports {
+  font-style: italic;
+  color: var(--text-dark);
+}
+
+/* --- PIED DE PAGE (FOOTER) --- */
+footer {
+  background-color: var(--text-dark);
+  color: #cccccc;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto; /* Pousse le footer vers le bas */
+}
+
+/* --- RESPONSIVITÉ (OPTIONNEL) --- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+  
+  #quiz-container {
+    width: 95%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  div.question {
+    font-size: 1.1em;
+  }
