@@ -441,14 +441,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Afficher le quiz immédiatement
   buildQuiz();
   
-  function donneConseil(listeAime,multiplierNbExo,multiplierParExo) {
-    let affichage ="";
-    for (let i = 0;i<listeAime.length;i++){
-      if(listeAime[i][0]=="Sports de raquette"){
-        
-      }
-    }
+  function realExo(multiplierNbExo,multiplierParExo,nbExosParSport){
+    const nbExo = multiplierNbExo*nbExosParSport[2];
+    const nbRep = multiplierParExo*nbExosParSport[1];
+    affichage=`${nbExo} fois ${nbRep} de ${nbExosParSport[0]}\n`;
+    return affichage
+  }
 
+  function donneConseil(listeAime,multiplierNbExo,multiplierParExo) {
     // EXOS DE BASE (Force générale, Tonification)
     const exosFonctionnelBase = [
       ["Squats (Contrôlé)", 10, 3], // 3 séries de 10
@@ -556,6 +556,80 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 23. Voile (Gainage Antirotation, Force du tronc)
     let nbExoVoile = exosFonctionnelStabilite;
+
+    let affichage =`Tu va faire:\n`;
+    for (let i = 0;i<listeAime.length;i++){
+      if(listeAime[i][0]=="Sports de raquette"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDeRaquette);
+      }
+      else if(listeAime[i][0]=="Triathlon"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoTriathlon);
+      }
+      else if(listeAime[i][0]=="Athlétisme"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoAthletisme);
+      }
+      else if(listeAime[i][0]=="Sports de combat"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDeCombat);
+      }
+      else if(listeAime[i][0]=="Cross training"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoCrossTraining);
+      }
+      else if(listeAime[i][0]=="Course à pied"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoCourseAPied);
+      }
+      else if(listeAime[i][0]=="Vélo"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoVelo);
+      }
+      else if(listeAime[i][0]=="Danses"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoDanses);
+      }
+      else if(listeAime[i][0]=="Sports de précision"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDePrecision);
+      }
+      else if(listeAime[i][0]=="Fitness / Bien être"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoFitnessBienEtre);
+      }
+      else if(listeAime[i][0]=="Football"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoFootball);
+      }
+      else if(listeAime[i][0]=="Rugby"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoRugby);
+      }
+      else if(listeAime[i][0]=="Basketball"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoBasketball);
+      }
+      else if(listeAime[i][0]=="Arts martiaux"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoArtsMartiaux);
+      }
+      else if(listeAime[i][0]=="Musculation"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoMusculation);
+      }
+      else if(listeAime[i][0]=="Sports d'eau"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDEau);
+      }
+      else if(listeAime[i][0]=="Escalade"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoEscalade);
+      }
+      else if(listeAime[i][0]=="Sports de glisse"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDeGlisse);
+      }
+      else if(listeAime[i][0]=="Running"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoRunning);
+      }
+      else if(listeAime[i][0]=="Sports d'hiver"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDHiver);
+      }
+      else if(listeAime[i][0]=="Sports de planche"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoSportsDePlanche);
+      }
+      else if(listeAime[i][0]=="Ultimate"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoUltimate);
+      }
+      else if(listeAime[i][0]=="Voile"){
+        affichage+=realExo(multiplierNbExo,multiplierParExo,nbExoVoile);
+      }
+    }
+    document.getElementById('objectif').innerHTML = affichage;
   }
   
   // Ajouter un écouteur d'événement au bouton
